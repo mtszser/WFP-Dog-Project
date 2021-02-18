@@ -1,0 +1,168 @@
+﻿<Window x:Class="WPF_Projekt.DogsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Dog Profile" 
+        Height="500" 
+        Width="750" 
+        WindowStartupLocation="CenterScreen" 
+        Icon="/Pictures/trophy.png" 
+        MinHeight="500" 
+        MinWidth="700" Topmost="True">
+    <Window.Resources>
+        <Style x:Key="DogProfileButton">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="DPS1" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="7"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Height="25"  CornerRadius="5" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Pictures/DogsOwner.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+    <StackPanel Name="DogsMenuBorder" 
+                Height="400" 
+                Width="650" 
+                Background="#CCFFFFFF">
+        <TextBlock Width="130" FontSize="18" VerticalAlignment="Top" Margin="390,20,130,8" Text="Hello Owner ~"></TextBlock>
+
+        <StackPanel Orientation="Horizontal" 
+                    Height="150" 
+                    Width="550"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+            <DataGrid Name="dogProfileData" 
+                  Height="120" 
+                  Width="330"
+                  SelectionChanged="DogProfileData_SelectionChanged" Margin="15 10 5 10">
+
+                <!--Style of column Headings / Background-->
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#99D4D4D4"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header=" ID " Width="30"/>
+                    <DataGridTextColumn Header=" Name" Width="100"/>
+                    <DataGridTextColumn Header=" Breed " Width="100"/>
+                    <DataGridTextColumn Header=" Dog's Owner " Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Image Height="150" 
+                   Width="150" 
+                   Source="dogge.png"
+                   Margin="20,0,0,0">
+
+            </Image>
+        </StackPanel>
+        <Separator Height="1" 
+                   Width="400"
+                   Background="Black" 
+                   Margin="123,2,127,2">
+            <Separator.RenderTransform>
+                <ScaleTransform ScaleY="3" />
+            </Separator.RenderTransform>
+        </Separator>
+
+        <StackPanel Name="DPBContainer" 
+                    Height="60" 
+                    Width="400" 
+                    Margin="125,10" 
+                    HorizontalAlignment="Center">
+            <StackPanel Height="50" Margin="5" Width="310" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Focusable="False"
+                    Style="{DynamicResource DPS1}" 
+                    Content="Previous"
+                    Click="PreviousDog"/>
+                <Button Focusable="False"
+                    Style="{DynamicResource DPS1}" 
+                    Content="Next"
+                    Click="NextDog"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Name="DPBContainer2" 
+                    Height="110" 
+                    Width="400"
+                    HorizontalAlignment="Center">
+            <StackPanel Height="100" Margin="5" Width="310" 
+                        Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <Button Focusable="False"
+                    Style="{DynamicResource DPS1}" 
+                    Content="Delete dog"
+                    Click="DeleteBtn">
+                </Button>
+                <Button Focusable="False"
+                    Style="{DynamicResource DPS1}"
+                        Margin="1"
+                    Content="Edit"
+                    Click="EditBtn">
+                </Button>
+                <Button Focusable="False"
+                    Style="{DynamicResource DPS1}" 
+                    Content="Return"
+                    Click="ReturnBtn">
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Window>
