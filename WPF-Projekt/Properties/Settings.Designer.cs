@@ -27,12 +27,23 @@ namespace WPF_Projekt.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\mtszp\\source\\repos\\W" +
             "FP-Dog-Project\\WPF-Projekt\\DogsBase\\DogsBase.mdf;Integrated Security=True")]
-        public string connection_String {
+        public string cn_String {
             get {
-                return ((string)(this["connection_String"]));
+                return ((string)(this["cn_String"]));
             }
             set {
-                this["connection_String"] = value;
+                this["cn_String"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DogsBase\\Dogs" +
+            "Base.mdf;Integrated Security=True")]
+        public string DB_CS {
+            get {
+                return ((string)(this["DB_CS"]));
             }
         }
     }

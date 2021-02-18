@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="AddDog" 
         Height="650" 
-        Width="680" WindowStartupLocation="CenterScreen" Topmost="True">
+        Width="680" 
+        WindowStartupLocation="CenterScreen" 
+        Topmost="True">
     <Window.Background>
         <ImageBrush ImageSource="Pictures/DogsOwner.jpg" Stretch="UniformToFill"/>
     </Window.Background>
@@ -86,7 +88,7 @@
                   VerticalAlignment="Top" 
                   Width="230"
                   ItemsSource="{Binding}"
-                  AutoGenerateColumns="True">
+                  AutoGenerateColumns="True" SelectionChanged="AddDogDG_SelectionChanged">
 
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -96,10 +98,10 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header=" ID " Width="30"/>
-                <DataGridTextColumn Header=" Name" Width="60"/>
-                <DataGridTextColumn Header=" Breed " Width="60"/>
-                <DataGridTextColumn Header=" Dog's Owner " Width="*"/>
+                <DataGridTextColumn Binding="{Binding ID}" Header=" ID " Width="30"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header=" Name" Width="60"/>
+                <DataGridTextColumn Binding="{Binding Breed}" Header=" Breed " Width="60"/>
+                <DataGridTextColumn Binding="{Binding DogsOwner}" Header=" Dog's Owner " Width="*"/>
             </DataGrid.Columns>
 
         </DataGrid>

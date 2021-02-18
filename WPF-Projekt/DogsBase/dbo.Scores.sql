@@ -1,7 +1,8 @@
-﻿Create table Score
-(
-[Score_id] int primary key NOT NULL,
-[Outfit] INT NOT null, 
-[Speed] INT NOT NULL, 
-[Focus] INT NOT NULL,
-)
+﻿CREATE TABLE [dbo].[Scores] (
+    [Score_id] INT NOT NULL,
+    [Outfit]   INT NOT NULL,
+    [Speed]    INT NOT NULL,
+    [Focus]    INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([Score_id] ASC)
+);
+

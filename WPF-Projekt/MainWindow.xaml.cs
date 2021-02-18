@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Data.SqlClient;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -20,15 +21,15 @@ namespace WPF_Projekt
     /// </summary>
     public partial class MainWindow : Window
     {
+
        public MainWindow()
-        {
+       {
             
             InitializeComponent();
             DataContext = this;
-            
-        }
-        
 
+            
+       }
         private void Login_btn_Click(object sender, RoutedEventArgs e)
         {
             MainMenu mainMenu = new MainMenu();
