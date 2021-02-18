@@ -22,6 +22,7 @@ namespace WPF_Projekt
     {
        public MainWindow()
         {
+            
             InitializeComponent();
             DataContext = this;
             
