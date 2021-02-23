@@ -14,9 +14,9 @@ namespace WPF_Projekt
     
     public partial class DogsOwner
     {
-        public int User_id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public int Owner_id { get; set; }
         public string Name { get; set; }
+        public string Surname { get; set; }
+        public int Age { get; set; }
     }
 }

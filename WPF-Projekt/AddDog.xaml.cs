@@ -21,22 +21,63 @@ namespace WPF_Projekt
     /// Interaction logic for AddDog1.xaml
     /// </summary>
     public partial class AddDog : Window
-    { 
+    {
+        string errorbox = "Error";
+        string newdog = "New Dog";
+
 
         public AddDog()
         {
             InitializeComponent();
+            DogsBaseEntities db = new DogsBaseEntities();
             dogsService = new DogsService(db);
-
             AddDogDG.ItemsSource = dogsService.GetList();
+
         }
         DogsBaseEntities db = new DogsBaseEntities();
         DogsService dogsService;
 
         private void AddNewDog(object sender, RoutedEventArgs e)
         {
+            int parsedInput;
+            if (DogName_txt.Text == "")
+            {
+                MessageBox.Show("Please enter the dog's name", errorbox);
+            }
+            else if (DogBreed_txt.Text == "")
+            {
+                MessageBox.Show("Please enter the dog's breed", errorbox);
+            }
+            else if (DogOwner_txt.Text == "")
+            {
+                MessageBox.Show("Please enter  the dog's owner id", errorbox);
+            }
+            else if (!int.TryParse(DogOwner_txt.Text, out parsedInput))
+            {
+                MessageBox.Show("Dogs owner ID must be numeric", errorbox);
+                return;
+            }
+            else
+            {
+                int ownerinput = int.Parse(DogOwner_txt.Text);
+                DogsBaseEntities db = new DogsBaseEntities();
+                Dog dogs = new Dog()
+                {
+                    Name = DogName_txt.Text,
+                    Breed = DogBreed_txt.Text,
+                    Owner_id = ownerinput
+                };
+                db.Dogs.Add(dogs);
+                db.SaveChanges();
+                MessageBox.Show("Dog added successfully!", newdog);
+                AddDogDG.ItemsSource = dogsService.GetList();
+                DogName_txt.Text = String.Empty;
+                DogBreed_txt.Text = String.Empty;
+                DogOwner_txt.Text = String.Empty;
+            }
 
         }
+
 
         private void ReturnBtn(object sender, RoutedEventArgs e)
         {
@@ -46,6 +87,21 @@ namespace WPF_Projekt
         private void AddDogDG_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void DogName_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void DogBreed_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void DogOwner_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

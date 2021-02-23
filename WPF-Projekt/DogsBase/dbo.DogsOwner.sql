@@ -1,7 +1,8 @@
-﻿Create Table [DogsOwner]
-(
-[User_id] int primary key NOT NULL,
-[Username] varchar(15) NOT null, 
-[Password] VARCHAR(20) NOT NULL, 
-    [Name] VARCHAR(20) NOT NULL,
-)
+﻿CREATE TABLE [dbo].[DogsOwner] (
+    [User_id] INT          NOT NULL,
+    [Username]     VARCHAR (20) NOT NULL,
+    [Password]  VARCHAR (20) NOT NULL,
+	[Name] Varchar (20) NOT NULL,
+    PRIMARY KEY CLUSTERED ([User_id] ASC)
+);
+

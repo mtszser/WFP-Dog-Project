@@ -40,7 +40,7 @@ namespace WPF_Projekt
 
         }
 
-        private void dogProfile_Click(object sender, RoutedEventArgs e)
+        private void DogProfile_Click(object sender, RoutedEventArgs e)
         {
             DogsWindow dogsWindow = new DogsWindow();
             dogsWindow.Show();

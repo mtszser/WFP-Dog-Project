@@ -86,9 +86,13 @@
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
             <DataGrid Name="dogProfileData" 
-                  Height="120" 
-                  Width="330"
-                  SelectionChanged="DogProfileData_SelectionChanged" Margin="15 10 5 10">
+                      Height="120" 
+                      Width="330"
+                      SelectionChanged="DogProfileData_SelectionChanged" 
+                      Margin="15 10 5 10" 
+                      CanUserResizeColumns="False" 
+                      CanUserSortColumns="False" 
+                      CanUserReorderColumns="False">
 
                 <!--Style of column Headings / Background-->
                 <DataGrid.Resources>
@@ -100,10 +104,6 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header=" ID " Width="30"/>
-                    <DataGridTextColumn Header=" Name" Width="100"/>
-                    <DataGridTextColumn Header=" Breed " Width="100"/>
-                    <DataGridTextColumn Header=" Dog's Owner " Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Image Height="150" 
@@ -121,41 +121,29 @@
                 <ScaleTransform ScaleY="3" />
             </Separator.RenderTransform>
         </Separator>
-
-        <StackPanel Name="DPBContainer" 
-                    Height="60" 
-                    Width="400" 
-                    Margin="125,10" 
-                    HorizontalAlignment="Center">
-            <StackPanel Height="50" Margin="5" Width="310" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Focusable="False"
-                    Style="{DynamicResource DPS1}" 
-                    Content="Previous"
-                    Click="PreviousDog"/>
-                <Button Focusable="False"
-                    Style="{DynamicResource DPS1}" 
-                    Content="Next"
-                    Click="NextDog"/>
-            </StackPanel>
-        </StackPanel>
         <StackPanel Name="DPBContainer2" 
                     Height="110" 
                     Width="400"
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Center"
+                    Margin="30">
             <StackPanel Height="100" Margin="5" Width="310" 
                         Orientation="Vertical" 
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center">
-                <Button Focusable="False"
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Focusable="False"
                     Style="{DynamicResource DPS1}" 
-                    Content="Delete dog"
-                    Click="DeleteBtn">
+                    Content="Delete dog by ID"
+                    Click="DeleteBtn" HorizontalAlignment="Center">
                 </Button>
+                    <Label Content="ID:" Height="26" FontSize="12" FontWeight="Bold"></Label>
+                    <TextBox x:Name="ID_txt" Width="25" Height="25" TextAlignment="Center" Padding="3" TextChanged="TextBox_TextChanged"/>
+                </StackPanel>
                 <Button Focusable="False"
                     Style="{DynamicResource DPS1}"
                         Margin="1"
                     Content="Edit"
-                    Click="EditBtn">
+                    Click="EditBtn" HorizontalAlignment="Center">
                 </Button>
                 <Button Focusable="False"
                     Style="{DynamicResource DPS1}" 

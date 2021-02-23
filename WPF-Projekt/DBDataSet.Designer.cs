@@ -390,7 +390,7 @@ namespace WPF_Projekt {
             
             private global::System.Data.DataColumn columnBreed;
             
-            private global::System.Data.DataColumn columnDogsOwner;
+            private global::System.Data.DataColumn columnDogsOwner_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -451,9 +451,9 @@ namespace WPF_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DogsOwnerColumn {
+            public global::System.Data.DataColumn DogsOwner_idColumn {
                 get {
-                    return this.columnDogsOwner;
+                    return this.columnDogsOwner_id;
                 }
             }
             
@@ -494,13 +494,13 @@ namespace WPF_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DogsRow AddDogsRow(int Dog_id, string Name, string Breed, string DogsOwner) {
+            public DogsRow AddDogsRow(int Dog_id, string Name, string Breed, string DogsOwner_id) {
                 DogsRow rowDogsRow = ((DogsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Dog_id,
                         Name,
                         Breed,
-                        DogsOwner};
+                        DogsOwner_id};
                 rowDogsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDogsRow);
                 return rowDogsRow;
@@ -533,7 +533,7 @@ namespace WPF_Projekt {
                 this.columnDog_id = base.Columns["Dog_id"];
                 this.columnName = base.Columns["Name"];
                 this.columnBreed = base.Columns["Breed"];
-                this.columnDogsOwner = base.Columns["DogsOwner"];
+                this.columnDogsOwner_id = base.Columns["DogsOwner_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -545,8 +545,8 @@ namespace WPF_Projekt {
                 base.Columns.Add(this.columnName);
                 this.columnBreed = new global::System.Data.DataColumn("Breed", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBreed);
-                this.columnDogsOwner = new global::System.Data.DataColumn("DogsOwner", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDogsOwner);
+                this.columnDogsOwner_id = new global::System.Data.DataColumn("DogsOwner_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDogsOwner_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDog_id}, true));
                 this.columnDog_id.AllowDBNull = false;
@@ -555,8 +555,8 @@ namespace WPF_Projekt {
                 this.columnName.MaxLength = 20;
                 this.columnBreed.AllowDBNull = false;
                 this.columnBreed.MaxLength = 20;
-                this.columnDogsOwner.AllowDBNull = false;
-                this.columnDogsOwner.MaxLength = 30;
+                this.columnDogsOwner_id.AllowDBNull = false;
+                this.columnDogsOwner_id.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1631,12 +1631,12 @@ namespace WPF_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DogsOwner {
+            public string DogsOwner_id {
                 get {
-                    return ((string)(this[this.tableDogs.DogsOwnerColumn]));
+                    return ((string)(this[this.tableDogs.DogsOwner_idColumn]));
                 }
                 set {
-                    this[this.tableDogs.DogsOwnerColumn] = value;
+                    this[this.tableDogs.DogsOwner_idColumn] = value;
                 }
             }
         }
@@ -2071,7 +2071,7 @@ namespace WPF_Projekt.DBDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Dog_id", "Dog_id");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Breed", "Breed");
-            tableMapping.ColumnMappings.Add("DogsOwner", "DogsOwner");
+            tableMapping.ColumnMappings.Add("DogsOwner", "DogsOwner_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;

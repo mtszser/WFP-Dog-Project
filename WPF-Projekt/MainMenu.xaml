@@ -51,7 +51,7 @@
                     Background="White"
                     Height="25"
                     Width="190" 
-                    Click="dogProfile_Click">
+                    Click="DogProfile_Click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -88,7 +88,7 @@
             </Button>
 
         </StackPanel>
-        <TextBlock HorizontalAlignment="Center" Margin="172,16,172,0" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Background="White"><Run Text="~Pet me "/><Run Text=" "/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="172,16,172,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Text="~Pet me "></TextBlock>
 
     </Grid>
 

@@ -13,35 +13,38 @@ namespace WPF_Projekt.Classes
             Db = db;
         }
 
-        public void Add(Dogs dogs)
+
+        public void Add(Dog dogs)
         {
             Db.Dogs.Add(dogs);
             Db.SaveChanges();
         }
-        public void Remove(Dogs dogs)
+
+        public void Remove(Dog dogs)
         {
             Db.Dogs.Remove(dogs);
             Db.SaveChanges();
         }
-        public void Edit(Dogs dogs)
+        public void Edit(Dog dogs)
         {
-            var dog = Db.Dogs.FirstOrDefault(d => dogs.Dog_id == d.Dog_id);
+            var dog = Db.Dogs.FirstOrDefault(d => dogs.Id == d.Id);
             if (dog != null)
-            Db.SaveChanges();
+                Db.SaveChanges();
         }
 
-        public Dogs GetById(int id)
+        public Dog GetById(int id)
         {
-            return Db.Dogs.FirstOrDefault(d => id == d.Dog_id);
+            return Db.Dogs.FirstOrDefault(d => id == d.Id);
         }
 
 
         public DogsBaseEntities Db { get; }
 
-        public List<Dogs> GetList()
+        public List<Dog> GetList()
         {
+
             return Db.Dogs
-                //.Include(d=>d.Owner)
+                //.Include(d=>d.Owner_id)
                 .ToList();
         }
     }

@@ -32,9 +32,23 @@ namespace WPF_Projekt
        }
         private void Login_btn_Click(object sender, RoutedEventArgs e)
         {
-            MainMenu mainMenu = new MainMenu();
-            mainMenu.Show();
-            Close();
+
+            string error = "Login or username are incorrect!";
+            string error2 = "Error";
+
+            // Proste logowanie bez użycia profilu w bazie danych.
+
+            if (Username_txt.Text == "Mateusz" && Password_txt.Password == "Serafin")
+            {
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.Show();
+                Close();
+
+            }
+            else
+            {
+                MessageBox.Show(error, error2);
+            }
         }
     }
 }

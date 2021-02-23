@@ -34,15 +34,15 @@
                     Width="300" Height="120" Margin="100,267,100,133">
             <StackPanel Orientation="Horizontal" Height="40" Width="250" HorizontalAlignment="Center">
                 <Label Content="Dog's Name:" Height="28" Width="85" FontWeight="Bold" Margin="5"></Label>
-                <TextBox Name="DogName_txt" Height="28" FontSize="15" Width="150" Text=""/>
+                <TextBox x:Name="DogName_txt" Height="28" FontSize="15" Width="150" Padding="3"  TextChanged="DogName_txt_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40" Width="250" HorizontalAlignment="Center">
                 <Label Content="Dog's Breed:" Height="28" Width="85" FontWeight="Bold" Margin="5" ></Label>
-                <TextBox Name="DogBreed_txt" Height="28" FontSize="15" Width="150" Text=""/>
+                <TextBox x:Name="DogBreed_txt" Height="28" FontSize="15" Width="150" Padding="3" Text="" TextChanged="DogBreed_txt_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="40" Width="250" HorizontalAlignment="Center">
                 <Label Content="Dog's Owner:" Height="28" Width="85" FontWeight="Bold" Margin="5" ></Label>
-                <TextBox Name="DogOwner_txt" Height="28" FontSize="15" Width="150" Text=""/>
+                <TextBox x:Name="DogOwner_txt" Height="28" FontSize="15" Width="150" Padding="3" Text="" TextChanged="DogOwner_txt_TextChanged"/>
             </StackPanel>
         </StackPanel>
 
@@ -98,10 +98,6 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header=" ID " Width="30"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header=" Name" Width="60"/>
-                <DataGridTextColumn Binding="{Binding Breed}" Header=" Breed " Width="60"/>
-                <DataGridTextColumn Binding="{Binding DogsOwner}" Header=" Dog's Owner " Width="*"/>
             </DataGrid.Columns>
 
         </DataGrid>
