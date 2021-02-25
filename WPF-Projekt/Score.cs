@@ -18,5 +18,8 @@ namespace WPF_Projekt
         public int Outfit { get; set; }
         public int Speed { get; set; }
         public int Focus { get; set; }
+        public int Total { get; set; }
+        public int Dog_id { get; set; }
+        public int Juror_id { get; set; }
     }
 }

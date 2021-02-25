@@ -90,9 +90,7 @@
                       Width="330"
                       SelectionChanged="DogProfileData_SelectionChanged" 
                       Margin="15 10 5 10" 
-                      CanUserResizeColumns="False" 
-                      CanUserSortColumns="False" 
-                      CanUserReorderColumns="False">
+                      AutoGenerateColumns="False">
 
                 <!--Style of column Headings / Background-->
                 <DataGrid.Resources>
@@ -102,8 +100,11 @@
                         <Setter Property="BorderBrush" Value="Black"/>
                     </Style>
                 </DataGrid.Resources>
-
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header=" ID" Binding="{Binding Path=Id}"/>
+                    <DataGridTextColumn Header=" Name " Binding="{Binding Path=Name}" Width="*"/>
+                    <DataGridTextColumn Header=" Breed " Width="*" Binding="{Binding Path=Breed}"/>
+                    <DataGridTextColumn Header=" OwnerID " Width="*" Binding="{Binding Path=Owner_id}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Image Height="150" 
@@ -121,35 +122,53 @@
                 <ScaleTransform ScaleY="3" />
             </Separator.RenderTransform>
         </Separator>
-        <StackPanel Name="DPBContainer2" 
-                    Height="110" 
-                    Width="400"
-                    HorizontalAlignment="Center"
-                    Margin="30">
-            <StackPanel Height="100" Margin="5" Width="310" 
+        <StackPanel Width="550" Height="180" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Name="DPBContainer2" 
+                    Height="140" 
+                    Width="260"
+                    HorizontalAlignment="Left"
+                    Margin="10 0 0 0"
+                    Orientation="Vertical">
+                <StackPanel Height="130" Margin="5" Width="250" 
                         Orientation="Vertical" 
-                        HorizontalAlignment="Center" 
+                        HorizontalAlignment="Left" 
                         VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Focusable="False"
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="205" Height="39">
+                        <Button Focusable="False"
                     Style="{DynamicResource DPS1}" 
                     Content="Delete dog by ID"
                     Click="DeleteBtn" HorizontalAlignment="Center">
-                </Button>
-                    <Label Content="ID:" Height="26" FontSize="12" FontWeight="Bold"></Label>
-                    <TextBox x:Name="ID_txt" Width="25" Height="25" TextAlignment="Center" Padding="3" TextChanged="TextBox_TextChanged"/>
-                </StackPanel>
-                <Button Focusable="False"
-                    Style="{DynamicResource DPS1}"
-                        Margin="1"
-                    Content="Edit"
-                    Click="EditBtn" HorizontalAlignment="Center">
-                </Button>
-                <Button Focusable="False"
+                        </Button>
+                        <Label Content="ID:" Height="26" FontSize="12" FontWeight="Bold"></Label>
+                        <TextBox x:Name="ID_txt" Width="25" Height="25" TextAlignment="Center" Padding="3" TextChanged="TextBox_TextChanged"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="204" Height="39" Margin="6 0 0 0">
+                        <Button Focusable="False"
+                    Style="{DynamicResource DPS1}" 
+                            Margin="1"
+                            Content="Edit dog by ID"
+                            Click="EditBtn" HorizontalAlignment="Left">
+                        </Button>
+                        <Label Content="ID:" Height="26" FontSize="12" FontWeight="Bold" Margin="5 0  0 0"></Label>
+                        <TextBox x:Name="EditID_txt" Width="25" Height="25" TextAlignment="Center" Padding="3" TextChanged="EditID_txt_TextChanged"/>
+                    </StackPanel>
+                    <Button Focusable="False"
                     Style="{DynamicResource DPS1}" 
                     Content="Return"
-                    Click="ReturnBtn">
-                </Button>
+                    Click="ReturnBtn" HorizontalAlignment="Left">
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Width="200" 
+                        Height="170" 
+                        Margin="70 0 0 0">
+                <TextBlock x:Name="editDog" HorizontalAlignment="Center" TextWrapping="Wrap" Text=" Edit Dog: " Margin="0 5 0 15"  FontSize="15" FontWeight="Bold"/>
+                <TextBlock x:Name="DogName" HorizontalAlignment="Center" Margin="0 1 0 0" TextWrapping="Wrap" Text=" Dog's Name: "/>
+                <TextBox x:Name="EditDogName_txt" Height="25" Width="150" TextAlignment="Center"></TextBox>
+                <TextBlock x:Name="DogBreed" HorizontalAlignment="Center" TextWrapping="Wrap" Text=" Dog's Breed: "/>
+                <TextBox x:Name="EditDogBreed_txt" Height="25" Width="150" TextAlignment="Center"></TextBox>
+                <TextBlock x:Name="DogOwner" HorizontalAlignment="Center" TextWrapping="Wrap" Text=" Dog's Owner ID: "/>
+                <TextBox x:Name="EditDogOwner_txt" Height="25" Width="40" TextAlignment="Center"></TextBox>
             </StackPanel>
         </StackPanel>
     </StackPanel>

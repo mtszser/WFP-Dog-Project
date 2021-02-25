@@ -20,6 +20,12 @@ namespace WPF_Projekt.Classes
             Db.SaveChanges();
         }
 
+        public void AddOwner(DogsOwner dogsOwner)
+        {
+            Db.DogsOwners.Add(dogsOwner);
+            Db.SaveChanges();
+        }
+
         public void Remove(Dog dogs)
         {
             Db.Dogs.Remove(dogs);
@@ -37,15 +43,27 @@ namespace WPF_Projekt.Classes
             return Db.Dogs.FirstOrDefault(d => id == d.Id);
         }
 
+        public DogsOwner GetOwnerById(int id)
+        {
+            return Db.DogsOwners.FirstOrDefault(o => id == o.Owner_id);
+        }
+
 
         public DogsBaseEntities Db { get; }
 
-        public List<Dog> GetList()
+        public List<Dog> GetDogList()
         {
 
             return Db.Dogs
                 //.Include(d=>d.Owner_id)
                 .ToList();
         }
+
+        public List<DogsOwner> GetOwnerList()
+        {
+            return Db.DogsOwners.ToList();
+            
+        }
+
     }
 }

@@ -31,7 +31,7 @@ namespace WPF_Projekt
             InitializeComponent();
             DogsBaseEntities db = new DogsBaseEntities();
             dogsService = new DogsService(db);
-            AddDogDG.ItemsSource = dogsService.GetList();
+            AddDogDG.ItemsSource = dogsService.GetDogList();
 
         }
         DogsBaseEntities db = new DogsBaseEntities();
@@ -59,24 +59,32 @@ namespace WPF_Projekt
             }
             else
             {
+
                 int ownerinput = int.Parse(DogOwner_txt.Text);
                 DogsBaseEntities db = new DogsBaseEntities();
+                //DogsOwner dogsOwner = new DogsOwner();
+                //var ownerid = db.DogsOwners.Single(o => ownerinput == o.Owner_id);
+
                 Dog dogs = new Dog()
                 {
+
                     Name = DogName_txt.Text,
                     Breed = DogBreed_txt.Text,
-                    Owner_id = ownerinput
+                    Owner_id = ownerinput,
+                    
                 };
+                
                 db.Dogs.Add(dogs);
                 db.SaveChanges();
                 MessageBox.Show("Dog added successfully!", newdog);
-                AddDogDG.ItemsSource = dogsService.GetList();
+                AddDogDG.ItemsSource = dogsService.GetDogList();
                 DogName_txt.Text = String.Empty;
                 DogBreed_txt.Text = String.Empty;
                 DogOwner_txt.Text = String.Empty;
             }
 
         }
+
 
 
         private void ReturnBtn(object sender, RoutedEventArgs e)

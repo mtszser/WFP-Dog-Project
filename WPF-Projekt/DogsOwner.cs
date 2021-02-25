@@ -14,9 +14,20 @@ namespace WPF_Projekt
     
     public partial class DogsOwner
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DogsOwner()
+        {
+            this.Dogs = new HashSet<Dog>();
+        }
+    
         public int Owner_id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
+        public string City { get; set; }
+        public string PhoneNumber { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dog> Dogs { get; set; }
     }
 }

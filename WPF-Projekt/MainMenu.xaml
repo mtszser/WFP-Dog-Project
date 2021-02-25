@@ -19,20 +19,20 @@
           Width="450" 
           Background="#B2FFFFFF">
         <Image Source="/Pictures/dogMenu.png"
-               Height="200"
-               Width="200"
+               Height="150"
+               Width="150"
                VerticalAlignment="Top"
                Margin="0 40 0 0"></Image>
 
         <StackPanel Name="menuBtnPanel"
                     VerticalAlignment="Bottom"
                     Orientation="Vertical"
-                    Height="auto"
+                    Height="250"
                     Width="250"
                     Margin="0 20 0 20">
             <Button x:Name="addDog" 
                     Content="Add new dog"
-                    Margin="15"
+                    Margin="10"
                     FontSize="15"
                     Background="White"
                     Height="25"
@@ -44,9 +44,22 @@
                     </Style>
                 </Button.Resources>
             </Button>
+            <Button x:Name="AddOwner"
+                    Content="New Owner"
+                    Margin="10"
+                    FontSize="15"
+                    Background="White"
+                    Height="25"
+                    Width="190" Click="AddOwner_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button x:Name="dogProfile" 
                     Content="Your dog"
-                    Margin="15"
+                    Margin="10"
                     FontSize="15"
                     Background="White"
                     Height="25"
@@ -60,7 +73,7 @@
             </Button>
             <Button x:Name="Highscores" 
                     Content="Highscores" 
-                    Margin="15"
+                    Margin="10"
                     FontSize="15"
                     Background="White"
                     Height="25"
@@ -74,7 +87,7 @@
             </Button>
             <Button x:Name="Exit" 
                     Content="Exit" 
-                    Margin="15"
+                    Margin="10"
                     FontSize="15"
                     Background="White"
                     Height="25"

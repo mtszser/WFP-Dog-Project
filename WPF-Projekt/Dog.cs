@@ -18,5 +18,7 @@ namespace WPF_Projekt
         public string Name { get; set; }
         public string Breed { get; set; }
         public int Owner_id { get; set; }
+    
+        public virtual DogsOwner DogsOwner { get; set; }
     }
 }

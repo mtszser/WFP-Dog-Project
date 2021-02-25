@@ -43,7 +43,14 @@ namespace WPF_Projekt
         private void DogProfile_Click(object sender, RoutedEventArgs e)
         {
             DogsWindow dogsWindow = new DogsWindow();
-            dogsWindow.Show();
+            dogsWindow.ShowDialog();
+            
+        }
+
+        private void AddOwner_Click(object sender, RoutedEventArgs e)
+        {
+            AddOwner addowner = new AddOwner();
+            addowner.Show();
         }
     }
 }

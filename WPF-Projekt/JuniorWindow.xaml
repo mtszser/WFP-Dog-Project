@@ -1,0 +1,19 @@
+﻿<Window x:Class="WPF_Projekt.JuniorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Projekt"
+        mc:Ignorable="d"
+        Title="JuniorWindow" Height="450" Width="850"
+        WindowStartupLocation="CenterScreen" 
+        Icon="/Pictures/trophy.png"
+        Topmost="True">
+    <Window.Background>
+        <ImageBrush ImageSource="Pictures/DogsOwner.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
+    <StackPanel Name="MainJuniorPanel" Width="800" Height="400" Orientation="Horizontal">
+        <StackPanel Width="350" Margin="10 0 0 0" Height="350" Background="#CCFFFFFF"></StackPanel>
+        <StackPanel Width="350" Margin="80 0 0 0" Height="350" Background="#CCFFFFFF"></StackPanel>
+    </StackPanel>
+</Window>

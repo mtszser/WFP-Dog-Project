@@ -40,9 +40,9 @@
                 <Label Content="Dog's Breed:" Height="28" Width="85" FontWeight="Bold" Margin="5" ></Label>
                 <TextBox x:Name="DogBreed_txt" Height="28" FontSize="15" Width="150" Padding="3" Text="" TextChanged="DogBreed_txt_TextChanged"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="40" Width="250" HorizontalAlignment="Center">
-                <Label Content="Dog's Owner:" Height="28" Width="85" FontWeight="Bold" Margin="5" ></Label>
-                <TextBox x:Name="DogOwner_txt" Height="28" FontSize="15" Width="150" Padding="3" Text="" TextChanged="DogOwner_txt_TextChanged"/>
+            <StackPanel Orientation="Horizontal" Height="40" Margin="5,0,15,0">
+                <Label Content="Dog's Owner ID:" Height="28" Width="105" FontWeight="Bold" Margin="5,6" ></Label>
+                <TextBox x:Name="DogOwner_txt" Height="28" FontSize="15" Width="40" Padding="3" Text="" TextChanged="DogOwner_txt_TextChanged"/>
             </StackPanel>
         </StackPanel>
 
@@ -82,22 +82,28 @@
             </Button>
         </StackPanel>
         <TextBlock HorizontalAlignment="Stretch" FontSize="18" Text="~Will you be my new owner?!" Width="230" VerticalAlignment="Top" Margin="121,30,149,0"/>
-        <DataGrid Name="AddDogDG" HorizontalAlignment="Left" 
+        <DataGrid x:Name="AddDogDG" HorizontalAlignment="Left" 
                   Height="150" 
                   Margin="228,75,0,0" 
                   VerticalAlignment="Top" 
                   Width="230"
                   ItemsSource="{Binding}"
-                  AutoGenerateColumns="True" SelectionChanged="AddDogDG_SelectionChanged">
+                  AutoGenerateColumns="False" 
+                  x:FieldModifier="public"
+                  SelectionChanged="AddDogDG_SelectionChanged">
 
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="#99D4D4D4"/>
-                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderThickness" Value="1,0,0,1"/>
                     <Setter Property="BorderBrush" Value="Black"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
+                <DataGridTextColumn Header=" ID" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Header=" Name " Binding="{Binding Path=Name}" Width="*"/>
+                <DataGridTextColumn Header=" Breed " Width="*" Binding="{Binding Path=Breed}"/>
+                <DataGridTextColumn Header=" OwnerID " Width="*" Binding="{Binding Path=Owner_id}"/>
             </DataGrid.Columns>
 
         </DataGrid>

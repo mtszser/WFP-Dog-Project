@@ -98,43 +98,61 @@
       <DependentUpon>DBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Dog.cs">
-      <DependentUpon>DogBaseModel.tt</DependentUpon>
+      <DependentUpon>DogsBaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DogBaseModel.Context.cs">
+    <Compile Include="DogsBaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DogBaseModel.Context.tt</DependentUpon>
+      <DependentUpon>DogsBaseModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DogBaseModel.cs">
+    <Compile Include="DogsBaseModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DogBaseModel.tt</DependentUpon>
+      <DependentUpon>DogsBaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DogBaseModel.Designer.cs">
+    <Compile Include="DogsBaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DogBaseModel.edmx</DependentUpon>
+      <DependentUpon>DogsBaseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DogsOwner.cs">
-      <DependentUpon>DogBaseModel.tt</DependentUpon>
+      <DependentUpon>DogsBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DogsWindow.xaml.cs">
       <DependentUpon>DogsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Highscore.xaml.cs">
+      <DependentUpon>Highscore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="JuniorWindow.xaml.cs">
+      <DependentUpon>JuniorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Juror.cs">
-      <DependentUpon>DogBaseModel.tt</DependentUpon>
+      <DependentUpon>DogsBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Score.cs">
-      <DependentUpon>DogBaseModel.tt</DependentUpon>
+    <Compile Include="AddOwner.xaml.cs">
+      <DependentUpon>AddOwner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Score.cs">
+      <DependentUpon>DogsBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel.cs" />
     <Page Include="AddDog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DogsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Highscore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JuniorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,6 +172,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="AddOwner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -184,12 +206,12 @@
     <None Include="DBDataSet.xss">
       <DependentUpon>DBDataSet.xsd</DependentUpon>
     </None>
-    <EntityDeploy Include="DogBaseModel.edmx">
+    <EntityDeploy Include="DogsBaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DogBaseModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DogsBaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DogBaseModel.edmx.diagram">
-      <DependentUpon>DogBaseModel.edmx</DependentUpon>
+    <None Include="DogsBaseModel.edmx.diagram">
+      <DependentUpon>DogsBaseModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -246,24 +268,21 @@
     <Resource Include="Pictures\dog3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="dog3.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Pictures\highscores.png" />
+    <Resource Include="owner.png" />
     <Resource Include="dogge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DogBaseModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DogBaseModel.edmx</DependentUpon>
-      <LastGenOutput>DogBaseModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DogBaseModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DogBaseModel.edmx</DependentUpon>
-      <LastGenOutput>DogBaseModel.cs</LastGenOutput>
-    </Content>
     <Content Include="DogsBase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DogsBaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DogsBaseModel.edmx</DependentUpon>
+      <LastGenOutput>DogsBaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DogsBaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DogsBaseModel.edmx</DependentUpon>
+      <LastGenOutput>DogsBaseModel.cs</LastGenOutput>
     </Content>
     <Content Include="DogsBase\dbo.Dogs.sql" />
     <Content Include="DogsBase\dbo.DogsOwner.sql" />
@@ -274,7 +293,6 @@
       <DependentUpon>DogsBase.mdf</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
