@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_Projekt.Classes;
 
 namespace WPF_Projekt
 {
@@ -22,6 +23,20 @@ namespace WPF_Projekt
         public Highscore()
         {
             InitializeComponent();
+            DogsBaseEntities db = new DogsBaseEntities();
+            dogsService = new DogsService(db);
+            HighscoreGrid.ItemsSource = dogsService.GetHighscoreList();
+        }
+        DogsService dogsService;
+
+        private void HighScoresReturnbtn(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void HighscoreGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

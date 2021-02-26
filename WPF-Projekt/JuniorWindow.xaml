@@ -13,7 +13,116 @@
         <ImageBrush ImageSource="Pictures/DogsOwner.jpg" Stretch="UniformToFill"/>
     </Window.Background>
     <StackPanel Name="MainJuniorPanel" Width="800" Height="400" Orientation="Horizontal">
-        <StackPanel Width="350" Margin="10 0 0 0" Height="350" Background="#CCFFFFFF"></StackPanel>
-        <StackPanel Width="350" Margin="80 0 0 0" Height="350" Background="#CCFFFFFF"></StackPanel>
+        <StackPanel Name="JuniorButtons" Orientation="Vertical" Width="350" Margin="10 0 0 0" Height="350" Background="#CCFFFFFF">
+            <StackPanel Name="DogChoosePanel"
+                        Width="295"
+                        Height="220"
+                        Margin="0 20 0 20"
+                        Orientation="Vertical">
+                <Label Content="NEW SCORE" Width="100" Height="40" FontSize="20" FontFamily="Impact" />
+                <StackPanel Orientation="Horizontal" Width="90">
+                    <Label Content="JurorID:" Width="60" FontSize="13" Margin="0 5 0 3" FontWeight="Bold"></Label>
+                    <TextBox Name="JurorID_txt" Width="30" Height="20" FontSize="12" MaxLength="1" TextAlignment="Center" Padding="1" TextChanged="DogId_txt_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Width="90">
+                    <Label Content="DogID:" Width="60" FontSize="13" Margin="0 5 0 3" FontWeight="Bold"></Label>
+                    <TextBox Name="DogId_txt" Width="30" Height="20" FontSize="12" MaxLength="3" TextAlignment="Center" Padding="1" TextChanged="DogId_txt_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Width="90">
+                    <Label Content="Outfit:" Width="60" Margin="0 5 0 3" FontSize="13" FontWeight="Bold"></Label>
+                    <TextBox Name="DogOutfit_txt" Width="30" Height="20" FontSize="12" MaxLength="2" TextAlignment="Center" Padding="1"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Width="90">
+                    <Label Content="Speed:" Width="60" Margin="0 5 0 3" FontSize="13" FontWeight="Bold"></Label>
+                    <TextBox Name="DogSpeed_txt" Width="30" Height="20" FontSize="12" MaxLength="2" TextAlignment="Center" Padding="1"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Width="90">
+                    <Label Content="Focus:" Width="60" Margin="0 5 0 3" FontSize="13" FontWeight="Bold"></Label>
+                    <TextBox Name="DogFocus_txt" Width="30" Height="20" FontSize="12" MaxLength="2" TextAlignment="Center" Padding="1"></TextBox>
+                </StackPanel>
+
+        </StackPanel>
+            <StackPanel Name="ButtonPanel" 
+                        Width="295" 
+                        Height="80" 
+                        Margin="25,0,25,5" 
+                        VerticalAlignment="Bottom">
+                <Button x:Name="Score"
+                        Content="Add Score"
+                        Margin="0 5 0 0"
+                        Click="NewScore" 
+                        HorizontalAlignment="Center"
+                        FontSize="15">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="Width" Value="130"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="returnbtn"
+                        Content="Return"
+                        Click="ReturnJunior" 
+                        HorizontalAlignment="Center"
+                        Margin="0 10 0 0"
+                        FontSize="15">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="Width" Value="130"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
+
+
+        </StackPanel>
+        <StackPanel Width="350" Margin="80 0 0 0" Orientation="Vertical" Height="350" Background="#CCFFFFFF">
+            <DataGrid x:Name="NewScoreGrid"
+                      Height="200" 
+                      Width="330"
+                      Margin="0 20 0 0" 
+                      SelectionChanged="DataGrid_SelectionChanged"
+                      AutoGenerateColumns="False">
+                <!--Style of column Headings / Background-->
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#99D4D4D4"/>
+                        <Setter Property="BorderThickness" Value="1,1,1,2"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header=" ScoreID " Width="50" Binding="{Binding Score_id}"/>
+                    <DataGridTextColumn Header=" Dog ID " Width="50" Binding="{Binding Path=Dog.Id}"/>
+                    <DataGridTextColumn Header=" Dog Name " Width="*" Binding="{Binding Path=Dog.Name}"/>
+                    <DataGridTextColumn Header=" Total Points " Width="80" Binding="{Binding Path=Total}"/>
+                    <DataGridTextColumn Header=" Juror ID " Width="60" Binding="{Binding Juror_id}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" 
+                        Width="295" 
+                        Height="80" 
+                        Margin="25,15,25,0">
+                <Button x:Name="DeleteScore"
+                        Content="Delete Score by ID"
+                        Margin="40 5 0 0"
+                        Click="DeleteScorebtn" 
+                        HorizontalAlignment="Center"
+                        FontSize="15">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="Width" Value="130"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBox Name="DeleteScoreID" Width="30" Height="25" Padding="3" TextAlignment="Center" Margin="10 0 0 0" MaxLength="3"></TextBox>
+            </StackPanel>
+        </StackPanel>
     </StackPanel>
 </Window>

@@ -45,6 +45,11 @@ namespace WPF_Projekt
                 Close();
 
             }
+            else if (Username_txt.Text == "Juror1" && Password_txt.Password == "123")
+            {
+                JuniorWindow juniorWindow = new JuniorWindow();
+                juniorWindow.ShowDialog();
+            }
             else
             {
                 MessageBox.Show(error, error2);

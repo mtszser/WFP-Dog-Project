@@ -21,5 +21,8 @@ namespace WPF_Projekt
         public int Total { get; set; }
         public int Dog_id { get; set; }
         public int Juror_id { get; set; }
+    
+        public virtual Dog Dog { get; set; }
+        public virtual Juror Juror { get; set; }
     }
 }

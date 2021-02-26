@@ -27,6 +27,7 @@ namespace WPF_Projekt
     
         public virtual DbSet<Dog> Dogs { get; set; }
         public virtual DbSet<DogsOwner> DogsOwners { get; set; }
+        public virtual DbSet<Highscore> Highscores { get; set; }
         public virtual DbSet<Juror> Jurors { get; set; }
         public virtual DbSet<Score> Scores { get; set; }
     }

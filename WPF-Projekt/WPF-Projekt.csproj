@@ -121,6 +121,9 @@
     <Compile Include="DogsWindow.xaml.cs">
       <DependentUpon>DogsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Highscore.cs">
+      <DependentUpon>DogsBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Highscore.xaml.cs">
       <DependentUpon>Highscore.xaml</DependentUpon>
     </Compile>
@@ -139,7 +142,6 @@
     <Compile Include="Score.cs">
       <DependentUpon>DogsBaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel.cs" />
     <Page Include="AddDog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

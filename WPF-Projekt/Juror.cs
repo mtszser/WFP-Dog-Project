@@ -14,9 +14,18 @@ namespace WPF_Projekt
     
     public partial class Juror
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Juror()
+        {
+            this.Scores = new HashSet<Score>();
+        }
+    
         public int Juror_id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Specialization { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Score> Scores { get; set; }
     }
 }

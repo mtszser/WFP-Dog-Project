@@ -4,12 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5ab7d768e8104328995e84129103dfa5" Name="Diagram1">
-        <EntityTypeShape EntityType="DogsBaseModel.Dog" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogsBaseModel.DogsOwner" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogsBaseModel.Juror" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DogsBaseModel.Score" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+      <Diagram DiagramId="0ffafdcdda094bdbb42763875a727ecb" Name="Diagram1">
+        <EntityTypeShape EntityType="DogsBaseModel.Dog" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogsBaseModel.DogsOwner" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogsBaseModel.Highscore" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogsBaseModel.Juror" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DogsBaseModel.Score" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="DogsBaseModel.FK__Dog__Owner_id__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="DogsBaseModel.FK__Highscore__Dog_i__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="DogsBaseModel.FK__Scores__Dog_id__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="DogsBaseModel.FK__Scores__Juror_id__02084FDA" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -25,6 +25,14 @@
           <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="9" Nullable="false" />
         </EntityType>
+        <EntityType Name="Highscores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dog_id" Type="int" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Jurors">
           <Key>
             <PropertyRef Name="Juror_id" />
@@ -58,14 +66,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Highscore__Dog_i__17F790F9">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="1" />
+          <End Role="Highscores" Type="Self.Highscores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Highscores">
+              <PropertyRef Name="Dog_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scores__Dog_id__01142BA1">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="1" />
+          <End Role="Scores" Type="Self.Scores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scores">
+              <PropertyRef Name="Dog_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scores__Juror_id__02084FDA">
+          <End Role="Jurors" Type="Self.Jurors" Multiplicity="1" />
+          <End Role="Scores" Type="Self.Scores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jurors">
+              <PropertyRef Name="Juror_id" />
+            </Principal>
+            <Dependent Role="Scores">
+              <PropertyRef Name="Juror_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DogsBaseModelStoreContainer">
           <EntitySet Name="Dog" EntityType="Self.Dog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DogsOwner" EntityType="Self.DogsOwner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Highscores" EntityType="Self.Highscores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Jurors" EntityType="Self.Jurors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Scores" EntityType="Self.Scores" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Dog__Owner_id__6E01572D" Association="Self.FK__Dog__Owner_id__6E01572D">
             <End Role="DogsOwner" EntitySet="DogsOwner" />
             <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Highscore__Dog_i__17F790F9" Association="Self.FK__Highscore__Dog_i__17F790F9">
+            <End Role="Dog" EntitySet="Dog" />
+            <End Role="Highscores" EntitySet="Highscores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scores__Dog_id__01142BA1" Association="Self.FK__Scores__Dog_id__01142BA1">
+            <End Role="Dog" EntitySet="Dog" />
+            <End Role="Scores" EntitySet="Scores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scores__Juror_id__02084FDA" Association="Self.FK__Scores__Juror_id__02084FDA">
+            <End Role="Jurors" EntitySet="Jurors" />
+            <End Role="Scores" EntitySet="Scores" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -82,6 +139,8 @@
           <Property Name="Breed" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Owner_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DogsOwner" Relationship="Self.FK__Dog__Owner_id__6E01572D" FromRole="Dog" ToRole="DogsOwner" />
+          <NavigationProperty Name="Highscores" Relationship="Self.FK__Highscore__Dog_i__17F790F9" FromRole="Dog" ToRole="Highscores" />
+          <NavigationProperty Name="Scores" Relationship="Self.FK__Scores__Dog_id__01142BA1" FromRole="Dog" ToRole="Scores" />
         </EntityType>
         <EntityType Name="DogsOwner">
           <Key>
@@ -95,6 +154,15 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Dogs" Relationship="Self.FK__Dog__Owner_id__6E01572D" FromRole="DogsOwner" ToRole="Dog" />
         </EntityType>
+        <EntityType Name="Highscore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dog_id" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dog" Relationship="Self.FK__Highscore__Dog_i__17F790F9" FromRole="Highscores" ToRole="Dog" />
+        </EntityType>
         <EntityType Name="Juror">
           <Key>
             <PropertyRef Name="Juror_id" />
@@ -103,6 +171,7 @@
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Specialization" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Scores" Relationship="Self.FK__Scores__Juror_id__02084FDA" FromRole="Jurors" ToRole="Scores" />
         </EntityType>
         <EntityType Name="Score">
           <Key>
@@ -115,6 +184,8 @@
           <Property Name="Total" Type="Int32" Nullable="false" />
           <Property Name="Dog_id" Type="Int32" Nullable="false" />
           <Property Name="Juror_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dog" Relationship="Self.FK__Scores__Dog_id__01142BA1" FromRole="Scores" ToRole="Dog" />
+          <NavigationProperty Name="Juror" Relationship="Self.FK__Scores__Juror_id__02084FDA" FromRole="Scores" ToRole="Jurors" />
         </EntityType>
         <Association Name="FK__Dog__Owner_id__6E01572D">
           <End Role="DogsOwner" Type="Self.DogsOwner" Multiplicity="1" />
@@ -128,14 +199,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Highscore__Dog_i__17F790F9">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="1" />
+          <End Role="Highscores" Type="Self.Highscore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Highscores">
+              <PropertyRef Name="Dog_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scores__Dog_id__01142BA1">
+          <End Role="Dog" Type="Self.Dog" Multiplicity="1" />
+          <End Role="Scores" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Scores">
+              <PropertyRef Name="Dog_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Scores__Juror_id__02084FDA">
+          <End Role="Jurors" Type="Self.Juror" Multiplicity="1" />
+          <End Role="Scores" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jurors">
+              <PropertyRef Name="Juror_id" />
+            </Principal>
+            <Dependent Role="Scores">
+              <PropertyRef Name="Juror_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DogsBaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Dogs" EntityType="Self.Dog" />
           <EntitySet Name="DogsOwners" EntityType="Self.DogsOwner" />
+          <EntitySet Name="Highscores" EntityType="Self.Highscore" />
           <EntitySet Name="Jurors" EntityType="Self.Juror" />
           <EntitySet Name="Scores" EntityType="Self.Score" />
           <AssociationSet Name="FK__Dog__Owner_id__6E01572D" Association="Self.FK__Dog__Owner_id__6E01572D">
             <End Role="DogsOwner" EntitySet="DogsOwners" />
             <End Role="Dog" EntitySet="Dogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Highscore__Dog_i__17F790F9" Association="Self.FK__Highscore__Dog_i__17F790F9">
+            <End Role="Dog" EntitySet="Dogs" />
+            <End Role="Highscores" EntitySet="Highscores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scores__Dog_id__01142BA1" Association="Self.FK__Scores__Dog_id__01142BA1">
+            <End Role="Dog" EntitySet="Dogs" />
+            <End Role="Scores" EntitySet="Scores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Scores__Juror_id__02084FDA" Association="Self.FK__Scores__Juror_id__02084FDA">
+            <End Role="Jurors" EntitySet="Jurors" />
+            <End Role="Scores" EntitySet="Scores" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -163,6 +283,15 @@
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Highscores">
+            <EntityTypeMapping TypeName="DogsBaseModel.Highscore">
+              <MappingFragment StoreEntitySet="Highscores">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Dog_id" ColumnName="Dog_id" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

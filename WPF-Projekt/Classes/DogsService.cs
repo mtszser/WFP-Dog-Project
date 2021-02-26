@@ -13,7 +13,6 @@ namespace WPF_Projekt.Classes
             Db = db;
         }
 
-
         public void Add(Dog dogs)
         {
             Db.Dogs.Add(dogs);
@@ -65,5 +64,14 @@ namespace WPF_Projekt.Classes
             
         }
 
+        public List<Score> GetScoreList()
+        {
+            return Db.Scores.ToList();
+        }
+
+        public List<Highscore> GetHighscoreList()
+        {
+            return Db.Highscores.ToList();
+        }
     }
 }

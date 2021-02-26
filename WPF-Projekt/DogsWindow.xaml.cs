@@ -111,6 +111,7 @@ namespace WPF_Projekt
                 //    from Dog in db.Dogs
                 //    where Dog.Id == dogID
                 //    select Dog;
+                
                 var updateDog = db.Dogs.Where(d => d.Id == editDogID).FirstOrDefault();
 
                 updateDog.Name = EditDogName_txt.Text;

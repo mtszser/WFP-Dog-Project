@@ -98,5 +98,54 @@ namespace WPF_Projekt
         {
 
         }
+
+        private void ReturnOwnerBtn(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void OwnerDelete(object sender, RoutedEventArgs e)
+        {
+            Dog dogs = new Dog();
+            DogsBaseEntities db = new DogsBaseEntities();
+            int ownerID;
+            if (!int.TryParse(delOwnerID.Text, out ownerID))
+            {
+                MessageBox.Show("Owner ID must be numeric!");
+                return;
+            }
+            else if (delOwnerID.Text == "")
+            {
+                MessageBox.Show("Please enter Owner ID!");
+            }
+            else if (ownerID <= 0)
+            {
+                MessageBox.Show("There is no owner with that ID");
+            }
+            else
+            {
+                DogsOwner dogsOwner = new DogsOwner();
+                var deleteOwner =
+                    from DogsOwner in db.DogsOwners
+                    where DogsOwner.Owner_id == ownerID
+                    select DogsOwner;
+
+
+                foreach (var DogsOwner in deleteOwner)
+                {
+                    db.DogsOwners.Remove(DogsOwner);
+                }
+                MessageBox.Show("Owner deleted successfully");
+                db.SaveChanges();
+                OwnerProfile.ItemsSource = dogsService.GetOwnerList();
+                delOwnerID.Text = String.Empty;
+
+            }
+            
+
+        }
+            
+        
     }
 }
+

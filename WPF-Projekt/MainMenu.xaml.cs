@@ -37,7 +37,8 @@ namespace WPF_Projekt
 
         private void Highscores_Click(object sender, RoutedEventArgs e)
         {
-
+            Highscore highscore = new Highscore();
+            highscore.ShowDialog();
         }
 
         private void DogProfile_Click(object sender, RoutedEventArgs e)

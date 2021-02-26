@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Projekt"
         mc:Ignorable="d"
-        Title="New Owner" Height="600" Width="600"
+        Title="New Owner" Height="600" Width="700"
     WindowStartupLocation="CenterScreen" 
         Topmost="True">
     <Window.Background>
@@ -13,7 +13,7 @@
     </Window.Background>
     <Grid Name ="addMenuPanel" 
           Height="520" 
-          Width="500" 
+          Width="620" 
           Background="#CCFFFFFF">
         <StackPanel Name="EditDogPanel"
                     VerticalAlignment="Center"
@@ -41,26 +41,70 @@
                 </Button.Resources>
             </Button>
         </StackPanel>
-        <DataGrid Name="OwnerProfile" 
-                  HorizontalAlignment="Left" 
-                  Height="131" 
-                  Margin="200,38,0,0" 
-                  VerticalAlignment="Top" 
-                  Width="280" 
-                  SelectionChanged="DataGrid_SelectionChanged"
-                  CanUserResizeColumns="False" 
-                  CanUserSortColumns="False" 
-                  CanUserReorderColumns="False">
-            <!--Style of column Headings / Background-->
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#99D4D4D4"/>
-                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
-                    <Setter Property="BorderBrush" Value="Black"/>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel Width="420" Height="500" Orientation="Vertical" HorizontalAlignment="Right">
+            <DataGrid Name="OwnerProfile" 
+                      HorizontalAlignment="Left" 
+                      Height="167" 
+                      VerticalAlignment="Top" 
+                      Width="410" 
+                      Margin="5 20 0 0"
+                      SelectionChanged="DataGrid_SelectionChanged"
+                      AutoGenerateColumns="False">
+                <!--Style of column Headings / Background-->
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#99D4D4D4"/>
+                        <Setter Property="BorderThickness" Value="1,1,1,2"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header=" OwnerID" Width="60"  Binding="{Binding Path=Owner_id}"/>
+                    <DataGridTextColumn Header=" Name " Binding="{Binding Path=Name}" Width="*"/>
+                    <DataGridTextColumn Header=" Surname " Width="60" Binding="{Binding Path=Surname}"/>
+                    <DataGridTextColumn Header=" Age " Width="30" Binding="{Binding Path=Age}"/>
+                    <DataGridTextColumn Header=" City " Width="50" Binding="{Binding Path=City}"/>
+                    <DataGridTextColumn Header=" PhoneNumber " Width="*" Binding="{Binding Path=PhoneNumber}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Width="220" 
+                        Height="130" 
+                        Margin="0 20 0 0"
+                        Orientation="Vertical">
+                <Button x:Name="OwnerReturnbtn"
+                        Content="Return"
+                        Margin="0 5 0 0"
+                        Click="ReturnOwnerBtn" 
+                        Height="50"
+                        HorizontalAlignment="Center"
+                        FontSize="15">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="Width" Value="130"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <StackPanel Width="200" Height="80" Orientation="Horizontal">
+                    <Button x:Name="OwnerReturnbtn2"
+                        Content="Delete by ID:"
+                        Margin="0 5 0 0"
+                        Click="OwnerDelete" 
+                        Height="50"
+                        HorizontalAlignment="Center"
+                        FontSize="15">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="Height" Value="30"/>
+                                <Setter Property="Width" Value="130"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <TextBox Name="delOwnerID" Width="30" Height="25" Padding="3" TextAlignment="Center" Margin="12 6 0 0" MaxLength="3"></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

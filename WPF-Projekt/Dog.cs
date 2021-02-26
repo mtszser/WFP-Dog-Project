@@ -14,11 +14,22 @@ namespace WPF_Projekt
     
     public partial class Dog
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Dog()
+        {
+            this.Highscores = new HashSet<Highscore>();
+            this.Scores = new HashSet<Score>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Breed { get; set; }
         public int Owner_id { get; set; }
     
         public virtual DogsOwner DogsOwner { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Highscore> Highscores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Score> Scores { get; set; }
     }
 }
