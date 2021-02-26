@@ -41,8 +41,7 @@ namespace WPF_Projekt
             if (Username_txt.Text == "Mateusz" && Password_txt.Password == "Serafin")
             {
                 MainMenu mainMenu = new MainMenu();
-                mainMenu.Show();
-                Close();
+                mainMenu.ShowDialog();
 
             }
             else if (Username_txt.Text == "Juror1" && Password_txt.Password == "123")

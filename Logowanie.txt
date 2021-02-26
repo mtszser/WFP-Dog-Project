@@ -1,0 +1,10 @@
+Loguje do konta głównego profilu w którym możemy dodawać, usuwać i edytować psy, właścicieli itp.
+Dane:
+Username: Mateusz
+Password: Serafin
+
+
+Loguje do konta Jury z którego możemy dodać usuwać wyniki i przypisywać je do danych psów, a potem je wyświetlać lub usuwać.
+Dane:
+Username: Juror1
+Password: 123

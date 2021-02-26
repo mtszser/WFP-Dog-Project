@@ -170,13 +170,13 @@ namespace WPF_Projekt
             {
                 Score score = new Score();
                 var deletescore =
-                    from Score in db.Scores
-                    where Score.Score_id == scoreID
+                    from Score in db.Scores // przypisanie do deletescore
+                    where Score.Score_id == scoreID // wiersza Score gdzie id = id podanemu w textboxie
                     select Score;
 
                 foreach (var Score in deletescore)
                 {
-                    db.Scores.Remove(Score);
+                    db.Scores.Remove(Score); // usuwanie danego wiersza
                 }
                 MessageBox.Show("Score deleted successfully!");
                 db.SaveChanges();
